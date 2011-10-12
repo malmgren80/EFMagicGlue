@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using Microsoft.Practices.ServiceLocation;
 
 namespace EFMagicGlue
 {
@@ -22,7 +23,7 @@ namespace EFMagicGlue
 
         public static IObjectContextFactory ObjectContextFactory
         {
-            get { return null; }
+            get { return ServiceLocator.Current.GetInstance<IObjectContextFactory>(); }
         }
 
         public static void Init(IObjectContextStorage storage)
