@@ -10,7 +10,7 @@ namespace EFMagicGlue.Extensions
     /// <summary>
     /// Adds entension methods for <see cref="IQueryable"/>
     /// </summary>
-    public static class IQueryableExtension
+    public static class EntityFrameworkExtension
     {
         public static IQueryable<TSource> Include<TSource>(this IQueryable<TSource> source, string path)
         {

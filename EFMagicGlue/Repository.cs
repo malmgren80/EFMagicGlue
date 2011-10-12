@@ -30,13 +30,7 @@ namespace EFMagicGlue
 
         protected IObjectSet<T> ObjectSet
         {
-            get 
-            { 
-                if (_objectSet == null)
-                    _objectSet = Context.CreateObjectSet<T>();
-
-                return _objectSet;
-            }
+            get { return _objectSet ?? (_objectSet = Context.CreateObjectSet<T>()); }
         }
 
         public IQueryable<T> AsQueryable()
