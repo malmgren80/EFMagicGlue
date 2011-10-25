@@ -1,0 +1,16 @@
+EFMagicGlue is helpers for Entity Framework to follow repository and specification patterns. It is inspired by how Sharp Architecture (http://www.sharparchitecture.net/) uses NHibernate.
+
+Features:
+- ObjectContextManager that handles one or multiple ObjectContexts
+- ObjectContexts are stored in a replaceble IObjectContextStorage. Different storages are implemented: Simple, Web and ThreadSafe
+- Linq queries in repositories can be testable with linq to objects and List<T> (Fake implementation of IObjectSet<T>)
+- Support for multiple databases
+- Lifetime mangement of ObjectContext(s) with UnitOfWork
+- Support for TransactionScope and distributed transactions
+
+TODO:
+- Move code in SpecificationBuilder to Specification
+- Add T4-templates for generating POCO:s, repository and ObjectContext
+- Remove usage of ServiceLocator
+- Should be initialized with instance of IContextStorage and instance of IObjectContextFactory
+- Should support DbContext and DbSet
