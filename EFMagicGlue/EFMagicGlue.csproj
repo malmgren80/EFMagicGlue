@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbOperation.cs" />
-    <Compile Include="EntityFrameworkInitializer.cs" />
+    <Compile Include="EntityFramework.cs" />
     <Compile Include="Extensions\EntityFrameworkExtension.cs" />
     <Compile Include="Extensions\TransactionScopeExtensions.cs" />
     <Compile Include="IDbOperation.cs" />
@@ -82,9 +82,7 @@
     <Compile Include="ThreadSafeContextStorage.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

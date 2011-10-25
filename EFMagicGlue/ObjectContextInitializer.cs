@@ -7,24 +7,24 @@ namespace EFMagicGlue
 {
     public class ObjectContextInitializer
     {
-        private static readonly object syncLock = new object();
-        private static ObjectContextInitializer instance;
+        private static readonly object SyncLock = new object();
+        private bool _isInitialized;
 
-        protected ObjectContextInitializer() { }
+        private ObjectContextInitializer() { }
 
-        private bool isInitialized = false;
-
+        private static ObjectContextInitializer _instance;
         public static ObjectContextInitializer Instance()
         {
-            if (instance == null) {
-                lock (syncLock) {
-                    if (instance == null) {
-                        instance = new ObjectContextInitializer();
-                    }
+            if (_instance == null) 
+            {
+                lock (SyncLock)
+                {
+                    if (_instance == null)
+                        _instance = new ObjectContextInitializer();
                 }
             }
 
-            return instance;
+            return _instance;
         }
 
         /// <summary>
@@ -34,11 +34,16 @@ namespace EFMagicGlue
         /// </summary>
         /// <param name="initMethod"></param>
         public void InitializeObjectContextOnce(Action initMethod) {
-            lock (syncLock) {
-                if (!isInitialized) {
-                    initMethod();
-                    isInitialized = true;
+            lock (SyncLock) 
+            {
+                if (_isInitialized)
+                {
+                    // TODO: Log warning: already initialized
+                    return;
                 }
+
+                initMethod();
+                _isInitialized = true;
             }
         }
 
